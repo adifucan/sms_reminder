@@ -1,0 +1,14 @@
+{
+    "authors": [
+        {
+            "name": "Dmytro Poperechnyy",
+            "email": "adifucan@gmail.com"
+        }
+    ],
+    "require": {
+        "twitter/bootstrap": "3.1.*@dev",
+        "components/jquery": "dev-master",
+        "phpunit/phpunit": "*",
+        "php":">=5.4.0"
+    }
+}
