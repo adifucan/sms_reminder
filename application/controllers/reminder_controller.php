@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Front_controller extends VERTEX_Controller
+class Reminder_controller extends VERTEX_Controller
 {
     function __construct()
     {

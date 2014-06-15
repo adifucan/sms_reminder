@@ -37,7 +37,7 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-$route['default_controller'] = "front_controller";
+$route['default_controller'] = "reminder_controller";
 
 //user controller
 $route['registration'] = 'user_controller/registration_form';
@@ -46,9 +46,8 @@ $route['registration-confirm-page'] = 'user_controller/registration_confirm_page
 $route['confirm-registration/(:any)'] = 'user_controller/confirm_registration/$1';
 $route['users/(:any)'] = 'user_controller/$1';
 $route['cancel-confirm-page'] = 'user_controller/cancel_confirm_page';
-//$route['confirm-cancel-account/(:any)'] = 'user_controller/confirm_cancel_account/$1';
 
-$route['reminds/(:any)'] = 'front_controller/$1';
+$route['reminds/(:any)'] = 'reminder_controller/$1';
 
 
 

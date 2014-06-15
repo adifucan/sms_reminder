@@ -20,7 +20,7 @@ class Reminder_Model extends Parent_Model
     private function createSingleRemind($user_id, $phone_number, $send_datetime, $message)
     {
         // select  as r;
-        //TODO date < dateime think
+        //TODO date < datetime think
         $sql = 'insert into reminds (user_id, phone_number, send_datetime, status, message) 
                 VALUES(?, ?, STR_TO_DATE(?, "%Y/%e/%c %H:%i"), "unsent", ?)';
         $this->run($sql, array($user_id, $phone_number, $send_datetime, $message));
