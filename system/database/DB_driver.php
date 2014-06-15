@@ -102,18 +102,22 @@ class CI_DB_driver {
 	 */
 	function initialize()
 	{
+            		// ----------------------------------------------------------------
+log_message('error', 0);
 		// If an existing connection resource is available
 		// there is no need to connect and select the database
-		if (is_resource($this->conn_id) OR is_object($this->conn_id))
+		/*if (is_resource($this->conn_id) OR is_object($this->conn_id))
 		{
 			return TRUE;
-		}
-
+		}*/
+log_message('error', 5);
 		// ----------------------------------------------------------------
 
 		// Connect to the database and set the connection ID
 		$this->conn_id = ($this->pconnect == FALSE) ? $this->db_connect() : $this->db_pconnect();
 
+log_message('error', 6);
+                
 		// No connection resource?  Throw an error
 		if ( ! $this->conn_id)
 		{
@@ -121,13 +125,14 @@ class CI_DB_driver {
 
 			if ($this->db_debug)
 			{
+                            log_message('error', 1);
 				$this->display_error('db_unable_to_connect');
 			}
 			return FALSE;
 		}
 
 		// ----------------------------------------------------------------
-
+log_message('error', 4);
 		// Select the DB... assuming a database name is specified in the config file
 		if ($this->database != '')
 		{
@@ -137,6 +142,7 @@ class CI_DB_driver {
 
 				if ($this->db_debug)
 				{
+                                    log_message('error', 2);
 					$this->display_error('db_unable_to_select', $this->database);
 				}
 				return FALSE;
@@ -146,6 +152,7 @@ class CI_DB_driver {
 				// We've selected the DB. Now we set the character set
 				if ( ! $this->db_set_charset($this->char_set, $this->dbcollat))
 				{
+                                    log_message('error', 3);
 					return FALSE;
 				}
 

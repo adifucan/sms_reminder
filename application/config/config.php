@@ -180,7 +180,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'UKGS75NnN8yw2f1463278fd9QXR68767';
+$config['encryption_key'] = 'UKGS75NnN8yw2f14hjjh63278fd9QXR68767';
 
 /*
 |--------------------------------------------------------------------------

@@ -13,7 +13,15 @@ class VERTEX_Controller extends CI_Controller
 
     protected function view_header($title, $description)
     {
-        echo $this->parser->parse('site/header/header', array(), TRUE);
+        if ($this->session->userdata('user_id') !== FALSE)
+        {
+            $login_page =  $this->parser->parse('site/header/login_logined', array('username' => $this->session->userdata('user_name')), TRUE);
+        } else
+        {
+            $login_page =  $this->parser->parse('site/header/login_unlogined', array(), TRUE);
+        }
+        
+        echo $this->parser->parse('site/header/header', array('login_page' => $login_page), TRUE);
     }
 
     protected function view_footer()
