@@ -8,6 +8,7 @@ class VERTEX_Controller extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        //$this->output->enable_profiler(TRUE);
         //$this->load->model('Parent_Model');
     }
 
@@ -15,18 +16,18 @@ class VERTEX_Controller extends CI_Controller
     {
         if ($this->session->userdata('user_id') !== FALSE)
         {
-            $login_page =  $this->parser->parse('site/header/login_logined', array('username' => $this->session->userdata('user_name')), TRUE);
+            $login_page =  $this->parser->parse('login_logined', array('username' => $this->session->userdata('user_name')), TRUE);
         } else
         {
-            $login_page =  $this->parser->parse('site/header/login_unlogined', array(), TRUE);
+            $login_page =  $this->parser->parse('login_unlogined', array(), TRUE);
         }
         
-        echo $this->parser->parse('site/header/header', array('login_page' => $login_page), TRUE);
+        echo $this->parser->parse('header', array('login_page' => $login_page), TRUE);
     }
 
     protected function view_footer()
     {
-        echo $this->parser->parse('site/footer/footer', array(), TRUE);
+        echo $this->parser->parse('footer', array(), TRUE);
     }
 
     protected function view_page($page, $title, $description, $params = NULL)

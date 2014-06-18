@@ -8,6 +8,11 @@ class User_Model extends Parent_Model
     {
         parent::__construct();
     }
+
+    public function check_registration($login, $password)
+    {
+        return $this->get_value("SELECT count(*) FROM users WHERE login = ? AND password = ?", array($login, $password)) > 0;
+    }
     
     public function registrate_user($login, $email, $phone, $password, $guid)
     {

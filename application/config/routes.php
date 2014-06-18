@@ -48,9 +48,8 @@ $route['users/(:any)'] = 'user_controller/$1';
 $route['cancel-confirm-page'] = 'user_controller/cancel_confirm_page';
 
 $route['reminds/(:any)'] = 'reminder_controller/$1';
-
-
-
+$route['process_reminds'] = 'reminder_controller/process_reminds';
+$route['process_repeats'] = 'reminder_controller/process_repeats';
 
 
 $route['404_override'] = '';

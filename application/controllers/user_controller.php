@@ -5,8 +5,6 @@ if (!defined('BASEPATH'))
 
 class User_controller extends VERTEX_Controller
 {
-    private $is_admin;
-
     function __construct()
     {
         parent::__construct();
@@ -33,7 +31,16 @@ class User_controller extends VERTEX_Controller
         $phone = $this->input->post('phoneInput', FALSE);
         $password = $this->input->post('passwordInput', FALSE);
         $guid = uniqid();        
-        
+
+        /**
+         * TODO: process situation
+         */
+        $user = $this->User_Model->check_registration($login, md5($password));
+        if ($user == true) {
+            //User with such login, password already exists
+            redirect(base_url('/registration'), 'location', 303);
+        }
+
         $user = $this->User_Model->registrate_user($login, $email, $phone, md5($password), $guid);
 
         send2($email, "To continue registration pls follow the link http://magento.local/confirm-registration/$guid", 'Registrations on SMSReminder');
@@ -51,7 +58,6 @@ class User_controller extends VERTEX_Controller
         $this->session->unset_userdata('user_id');    
         $this->session->unset_userdata('user_name');                
         
-        //redirect    
         redirect('/');        
     }
     
@@ -61,11 +67,9 @@ class User_controller extends VERTEX_Controller
         if ($data === false)
             return; //TODO: process fail
             
-        //log in
         $this->session->set_userdata('user_id', $data['id']);    
         $this->session->set_userdata('user_name', $data['login']);                
         
-        //redirect    
         redirect('/');
     }
 
@@ -91,11 +95,7 @@ class User_controller extends VERTEX_Controller
 
     public function cancel()
     {
-        $id = $this->session->all_userdata()['user_id'];
-        //$email = $this->User_Model->get_email();
-        //$guid = uniqid();
-        //send2($email, "To cancel account pls follow the link http://magento.local/confirm-cancel-account/$guid",
-          //  'Cancel your account on SMSReminder');
+        $id = $this->session->userdata('user_id');
         $this->User_Model->cancel_account($id);
 
         $this->session->unset_userdata('user_id');

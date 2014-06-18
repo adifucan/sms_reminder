@@ -8,6 +8,16 @@
             CI_Model::__construct();
         }
         
+        protected function START()
+        {
+            $this->db->trans_start();
+        }
+        
+        protected FUNCTION COMMIT()
+        {
+            $this->db->trans_complete(); 
+        }
+        
         protected function get($sql, $binds = NULL)
         {
             $query = $this->db->query($sql, $binds);
